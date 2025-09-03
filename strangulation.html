@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strangulation Signs - IPV First Responder Guide</title>
+    <meta name="description" content="Critical signs of strangulation in intimate partner violence - First responder identification guide">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="BI Red Flags">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #dc3545, #fd7e14, #ffc107, #198754, #0d6efd);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '🚨';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .nav-bar {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .nav-bar a {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 20px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-bar a:hover {
+            background: #e9ecef;
+            color: #2c3e50;
+        }
+        
+        .nav-bar a.home {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .nav-bar a.home:hover {
+            background: linear-gradient(135deg, #5a6fd8, #6c42a0);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .alert::before {
+            content: '⚠️';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .alert-content {
+            margin-left: 40px;
+        }
+        
+        .alert h3 {
+            color: #856404;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .alert p {
+            color: #664d03;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1.0s; }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+        
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .sign-item {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .sign-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .severity-critical {
+            border-left: 5px solid #dc3545;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        }
+        
+        .severity-high {
+            border-left: 5px solid #fd7e14;
+            background: linear-gradient(135deg, #fff8f0 0%, #ffffff 100%);
+        }
+        
+        .severity-moderate {
+            border-left: 5px solid #ffc107;
+            background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%);
+        }
+        
+        .sign-item h4 {
+            color: #dc3545;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sign-item h4::before {
+            content: '•';
+            margin-right: 8px;
+            font-size: 1.5rem;
+        }
+        
+        .sign-item p {
+            color: #495057;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .timing {
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .timeline {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .timeline h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .timeline-item {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: #dc3545;
+            border-radius: 50%;
+        }
+        
+        .documentation-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .documentation-box h3 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .documentation-box h3::before {
+            content: '📋';
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .doc-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .doc-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .doc-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .nav-bar {
+                padding: 15px;
+            }
+            
+            .nav-bar a {
+                display: inline-block;
+                margin: 5px 10px 5px 0;
+            }
+            
+            .signs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .card {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header {
+                background: #dc3545 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>Strangulation Recognition</h1>
+            <p>Critical signs often missed or misinterpreted</p>
+        </div>
+        
+        <div class="nav-bar">
+            <a href="index.html" class="home">← Back to Red Flags</a>
+            <a href="#immediate">Immediate Signs</a>
+            <a href="#delayed">Delayed Signs</a>
+            <a href="#documentation">Documentation</a>
+        </div>
+        
+        <div class="content">
+            <div class="alert">
+                <div class="alert-content">
+                    <h3>Critical Knowledge for First Responders</h3>
+                    <p>Strangulation can cause death up to 36 hours after the incident. Many victims show no visible injuries initially but may have serious internal damage. This is one of the strongest predictors of future homicide in IPV cases.</p>
+                </div>
+            </div>
+            
+            <div class="section" id="immediate">
+                <h2 class="section-title">
+                    <span class="icon">🩺</span>
+                    Immediate Signs (0-24 hours)
+                </h2>
+                <div class="signs-grid">
+                    <div class="sign-item severity-critical">
+                        <h4>Raspy or Hoarse Voice</h4>
+                        <p>Voice changes from swelling of vocal cords and throat tissues. Often the first and most obvious sign.</p>
+                        <span class="timing">Appears: Immediately</span>
+                    </div>
+                    <div class="sign-item severity-critical">
+                        <h4>Difficulty Swallowing</h4>
+                        <p>Throat pain, feeling like something is stuck, unable to swallow saliva properly.</p>
+                        <span class="timing">Appears: Immediately</span>
+                    </div>
+                    <div class="sign-item severity-critical">
+                        <h4>Neck Pain or Stiffness</h4>
+                        <p>Tenderness around throat area, difficulty moving neck, muscle soreness.</p>
+                        <span class="timing">Appears: Immediately</span>
+                    </div>
+                    <div class="sign-item severity-high">
+                        <h4>Scratches or Fingernail Marks</h4>
+                        <p>Linear marks on neck from victim trying to remove hands, or from attacker's fingernails.</p>
+                        <span class="timing">Appears: Immediately</span>
+                    </div>
+                    <div class="sign-item severity-high">
+                        <h4>Red Eyes (Petechiae)</h4>
+                        <p>Small red spots in eyes from burst blood vessels. May also appear on face, eyelids, or neck.</p>
+                        <span class="timing">Appears: Within hours</span>
+                    </div>
+                    <div class="sign-item severity-high">
+                        <h4>Swollen Tongue or Lips</h4>
+                        <p>Tongue may be bitten during strangulation, lips may be swollen from lack of oxygen.</p>
+                        <span class="timing">Appears: Within hours</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section" id="delayed">
+                <h2 class="section-title">
+                    <span class="icon">⏰</span>
+                    Delayed Signs (24-72 hours)
+                </h2>
+                <div class="signs-grid">
+                    <div class="sign-item severity-high">
+                        <h4>Bruising Patterns</h4>
+                        <p>Finger-shaped bruises on neck, often more visible 24-48 hours later. May be on front, sides, or back of neck.</p>
+                        <span class="timing">Appears: 1-2 days later</span>
+                    </div>
+                    <div class="sign-item severity-moderate">
+                        <h4>Headaches</h4>
+                        <p>Severe headaches from oxygen deprivation to the brain, different from normal headaches.</p>
+                        <span class="timing">Appears: Hours to days</span>
+                    </div>
+                    <div class="sign-item severity-moderate">
+                        <h4>Memory Problems</h4>
+                        <p>Confusion, difficulty remembering the incident, concentration problems from brain oxygen loss.</p>
+                        <span class="timing">Appears: Hours to days</span>
+                    </div>
+                    <div class="sign-item severity-moderate">
+                        <h4>Vision Changes</h4>
+                        <p>Blurred vision, seeing spots, light sensitivity from pressure on blood vessels.</p>
+                        <span class="timing">Appears: Hours to days</span>
+                    </div>
+                    <div class="sign-item severity-high">
+                        <h4>Breathing Difficulties</h4>
+                        <p>Shortness of breath, feeling like throat is closing, difficulty getting enough air.</p>
+                        <span class="timing">Can persist for days</span>
+                    </div>
+                    <div class="sign-item severity-moderate">
+                        <h4>Involuntary Urination</h4>
+                        <p>Loss of bladder control during strangulation due to lack of oxygen to brain.</p>
+                        <span class="timing">During/immediately after</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="icon">🧠</span>
+                    Neurological Impact
+                </h2>
+                <div class="timeline">
+                    <h4>What Happens During Strangulation:</h4>
+                    <div class="timeline-item"><strong>4-10 seconds:</strong> Loss of consciousness begins</div>
+                    <div class="timeline-item"><strong>10-15 seconds:</strong> Complete unconsciousness</div>
+                    <div class="timeline-item"><strong>1-3 minutes:</strong> Brain damage may begin</div>
+                    <div class="timeline-item"><strong>3-5 minutes:</strong> Serious brain injury likely</div>
+                    <div class="timeline-item"><strong>5+ minutes:</strong> Death or permanent brain damage</div>
+                </div>
+                
+                <div class="alert">
+                    <div class="alert-content">
+                        <h3>Hidden Danger</h3>
+                        <p>Victims can appear normal initially but deteriorate rapidly. Internal injuries to blood vessels, airways, or brain may not show symptoms for hours. Always recommend immediate medical evaluation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section" id="documentation">
+                <div class="documentation-box">
+                    <h3>Documentation Checklist</h3>
+                    <ul class="doc-list">
+                        <li>Photograph all visible marks on neck (front, sides, back)</li>
+                        <li>Document voice changes - record if possible</li>
+                        <li>Note any red spots in eyes or on face</li>
+                        <li>Record victim's description of breathing difficulties</li>
+                        <li>Document any loss of consciousness reported</li>
+                        <li>Note scratches or defensive wounds on victim's hands</li>
+                        <li>Record exact words used to describe the incident</li>
+                        <li>Document any involuntary urination or defecation</li>
+                        <li>Arrange immediate medical examination</li>
+                        <li>Follow up in 24-48 hours for delayed bruising</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="alert">
+                <div class="alert-content">
+                    <h3>Remember: Strangulation is Attempted Murder</h3>
+                    <p>Even without visible injuries, strangulation is a serious felony and strong predictor of future homicide. Take every case seriously and ensure immediate medical evaluation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js')
+          .then(function(registration) {
+            console.log('ServiceWorker registration successful');
+          }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+    </script>
+</body>
+</html>
